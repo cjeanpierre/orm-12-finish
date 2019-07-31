@@ -1,5 +1,6 @@
 package com.puthisastra.rest.controller;
 
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -113,7 +114,10 @@ public class PersonController {
 	public ResponseEntity<List<Person>> search(
 			@RequestParam(name = "search")
 			@ApiParam(allowableValues = "name,title,author")
-			String searchParams) {
+			String searchParams,
+			// principal contains the authenticated user
+			Principal principal) {
+		System.out.println(principal.getName());
 		return new ResponseEntity<>(Arrays.asList(), HttpStatus.OK);
 	}
 	
